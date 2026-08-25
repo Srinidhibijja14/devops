@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Registration</title>
+</head>
+
+<body>
+
+    <h2>Event Registration Form</h2>
+
+    <form id="registrationForm" onsubmit="return validateForm()">
+
+        <label for="name">Full Name:</label>
+        <input type="text" id="name" name="name" required>
+        <br><br>
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required>
+        <br><br>
+
+        <label for="phone">Phone Number:</label>
+        <input type="tel"
+               id="phone"
+               name="phone"
+               required
+               pattern="[0-9]{10}"
+               maxlength="10">
+        <br><br>
+
+        <label for="event">Select Event:</label>
+        <select id="event" name="event" required>
+            <option value="">-- Select Event --</option>
+            <option value="workshop">Workshop</option>
+            <option value="seminar">Seminar</option>
+            <option value="conference">Conference</option>
+        </select>
+        <br><br>
+
+        <button type="submit">Register</button>
+
+    </form>
+
+    <script>
+        function validateForm() {
+
+            const phone = document.getElementById("phone").value;
+
+            if (!/^[0-9]{10}$/.test(phone)) {
+                alert("Invalid phone number. Please enter exactly 10 digits.");
+                return false;
+            }
+
+            alert("Registration Successful!");
+            return true;
+        }
+    </script>
+
+</body>
+</html>
